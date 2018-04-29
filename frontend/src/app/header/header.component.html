@@ -1,0 +1,16 @@
+<div class="container" style="padding-left: 0; padding-right: 0;">
+  <nav class="navbar navbar-dark bg-primary navbar-fixed-top navbar-expand-lg">
+    <a class="navbar-brand" (click)="navbarCollapsed = true">Kulcssoft HW</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
+            [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" href="#" (click)="navbarCollapsed = true">List Users</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
