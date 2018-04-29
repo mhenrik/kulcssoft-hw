@@ -4,10 +4,7 @@ import com.mhenrik.kulcssoft.hw.backend.model.User;
 import com.mhenrik.kulcssoft.hw.backend.service.UserService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserControllerREST {
@@ -42,5 +39,22 @@ public class UserControllerREST {
             @PathVariable(value = "email") String email) {
         User user = userService.getUserByEmail(email);
         return ResponseEntity.ok(user);
+    }
+
+    @PostMapping(value = "/user", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity addUser(
+            @RequestParam String username,
+            @RequestParam String email) {
+        User user = new User(username, email);
+        userService.saveUser(user);
+        return ResponseEntity.ok(user);
+    }
+
+    @DeleteMapping(value = "/user/{userId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<Void> deleteUserById (
+            @PathVariable Integer userId) {
+        userService.deleteUserById((long) userId);
+        return ResponseEntity.noContent().build();
+
     }
 }
