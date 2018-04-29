@@ -18,6 +18,7 @@ export class UserService {
 
   addUser(user: User) {
     this.users.push(user);
+    this.usersChanged.next(this.users);
     return user;
   }
 

@@ -12,6 +12,8 @@ import {AppRoutingModule} from './app-routing-module';
 import {UserService} from './shared/user.service';
 import {DataService} from './shared/data.service';
 import {HttpClientModule} from '@angular/common/http';
+import { UserRegisterComponent } from './user-register/user-register.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -20,12 +22,14 @@ import {HttpClientModule} from '@angular/common/http';
     HeaderComponent,
     UserItemComponent,
     UserListComponent,
-    StartComponent
+    StartComponent,
+    UserRegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     NgbModule.forRoot(),
   ],
   providers: [UserService, DataService],

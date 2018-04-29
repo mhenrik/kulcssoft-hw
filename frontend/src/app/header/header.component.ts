@@ -16,5 +16,6 @@ export class HeaderComponent implements OnInit {
 
   onFetchData() {
     this.dataService.getUsersFromServer();
+    this.navbarCollapsed = true;
   }
 }
