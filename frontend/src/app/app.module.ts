@@ -5,12 +5,16 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { UserItemComponent } from './user-item/user-item.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserItemComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
