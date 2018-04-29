@@ -1,7 +1,9 @@
 import {User} from '../user/user.model';
+import {Subject} from 'rxjs/Subject';
 
 export class UserService {
   private users: User[] = [];
+  usersChanged = new Subject<User[]>();
 
   constructor() {}
 
@@ -11,6 +13,7 @@ export class UserService {
 
   setUsers(users: User[]) {
     this.users = users;
+    this.usersChanged.next(this.users);
   }
 
   addUser(user: User) {
