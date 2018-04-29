@@ -49,7 +49,7 @@ export class DataService {
       /*'Authorization': 'Basic YW5ndWxhcjphbmd1bGFy'*/
     });
     const params = new HttpParams()
-      .set('userId', userId);
+      .set('userId', userId.toLocaleString());
     const options = {
       headers,
       params,
