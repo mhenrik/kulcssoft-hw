@@ -9,6 +9,9 @@ import { UserItemComponent } from './user-item/user-item.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { StartComponent } from './start/start.component';
 import {AppRoutingModule} from './app-routing-module';
+import {UserService} from './shared/user.service';
+import {DataService} from './shared/data.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -22,9 +25,10 @@ import {AppRoutingModule} from './app-routing-module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     NgbModule.forRoot(),
   ],
-  providers: [],
+  providers: [UserService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

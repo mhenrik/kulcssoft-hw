@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DataService} from '../shared/data.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   navbarCollapsed = true;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
   }
 
+  onFetchData() {
+    this.dataService.getUsersFromServer();
+  }
 }
