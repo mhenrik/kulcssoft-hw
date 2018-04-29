@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../user/user.model';
+import {UserService} from '../shared/user.service';
+import {DataService} from '../shared/data.service';
 
 @Component({
   selector: 'app-user-item',
@@ -8,9 +10,13 @@ import {User} from '../user/user.model';
 })
 export class UserItemComponent implements OnInit {
   @Input() user: User;
-  constructor() { }
+  constructor(private userService: UserService, private dataService: DataService) { }
 
   ngOnInit() {
   }
 
+  onDeleteUser(user: User) {
+    this.userService.deleteUser(user);
+    this.dataService.deleteUserFromServer(user.id);
+  }
 }

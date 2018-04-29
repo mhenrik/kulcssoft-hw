@@ -42,4 +42,27 @@ export class DataService {
         }
       );
   }
+
+  public deleteUserFromServer(userId: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8'
+      /*'Authorization': 'Basic YW5ndWxhcjphbmd1bGFy'*/
+    });
+    const params = new HttpParams()
+      .set('userId', userId);
+    const options = {
+      headers,
+      params,
+      withCredentials: true
+    };
+    this.httpClient.delete('http://localhost:8080/user/' + userId, options)
+      .subscribe(response => {
+          console.log(response);
+        },
+        error1 => {
+          console.log('error');
+        }
+      );
+  }
+
 }

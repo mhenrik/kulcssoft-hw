@@ -1,6 +1,6 @@
 export class User {
 
-  private _userId: number;
+  private _id: number;
   private _username: string;
   private _email: string;
 
@@ -9,12 +9,12 @@ export class User {
     this._email = email;
   }
 
-  get userId(): number {
-    return this._userId;
+  get id(): number {
+    return this._id;
   }
 
-  set userId(value: number) {
-    this._userId = value;
+  set id(value: number) {
+    this._id = value;
   }
 
   get username(): string {

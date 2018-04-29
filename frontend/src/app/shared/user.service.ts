@@ -12,6 +12,7 @@ export class UserService {
   }
 
   setUsers(users: User[]) {
+    console.log(users);
     this.users = users;
     this.usersChanged.next(this.users);
   }
