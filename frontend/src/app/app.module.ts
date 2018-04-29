@@ -14,6 +14,7 @@ import {DataService} from './shared/data.service';
 import {HttpClientModule} from '@angular/common/http';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import {FormsModule} from '@angular/forms';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {FormsModule} from '@angular/forms';
     UserItemComponent,
     UserListComponent,
     StartComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

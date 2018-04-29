@@ -65,4 +65,27 @@ export class DataService {
       );
   }
 
+  login(username: string, password: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8'
+      /*'Authorization': 'Basic YW5ndWxhcjphbmd1bGFy'*/
+    });
+    const params = new HttpParams()
+      .set('username', username)
+      .set('password', password);
+    const options = {
+      headers,
+      params,
+      withCredentials: true
+    };
+    this.httpClient.post('http://localhost:8080/login', null, options)
+      .subscribe(response => {
+          console.log(response);
+        },
+        error1 => {
+          console.log('error');
+        }
+      );
+  }
+
 }
