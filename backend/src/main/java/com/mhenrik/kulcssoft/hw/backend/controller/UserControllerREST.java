@@ -17,10 +17,29 @@ public class UserControllerREST {
         this.userService = userService;
     }
 
+    @GetMapping(value = "/user", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity getUsers(){
+        return ResponseEntity.ok(userService.findAll());
+    }
+
     @GetMapping(value = "/user/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity getUserById(
             @PathVariable(value = "userId") Integer userId) {
         User user = userService.getUserById((long) userId);
+        return ResponseEntity.ok(user);
+    }
+
+    @GetMapping(value = "/user/{username}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity getUserByUsername(
+            @PathVariable(value = "username") String username) {
+        User user = userService.getUserByUsername(username);
+        return ResponseEntity.ok(user);
+    }
+
+    @GetMapping(value = "/user/{email}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity getUserByEmail(
+            @PathVariable(value = "email") String email) {
+        User user = userService.getUserByEmail(email);
         return ResponseEntity.ok(user);
     }
 }
