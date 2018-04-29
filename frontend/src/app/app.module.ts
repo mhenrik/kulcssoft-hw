@@ -7,6 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { UserItemComponent } from './user-item/user-item.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { StartComponent } from './start/start.component';
+import {AppRoutingModule} from './app-routing-module';
 
 
 @NgModule({
@@ -14,10 +16,12 @@ import { UserListComponent } from './user-list/user-list.component';
     AppComponent,
     HeaderComponent,
     UserItemComponent,
-    UserListComponent
+    UserListComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     NgbModule.forRoot(),
   ],
   providers: [],

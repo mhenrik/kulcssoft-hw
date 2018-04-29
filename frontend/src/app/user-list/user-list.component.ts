@@ -7,7 +7,12 @@ import {User} from '../user.model';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  users: User[];
+  users: User[] = [
+    new User('user1', 'email1@email.com'),
+    new User('user2', 'email2@email.com'),
+    new User('user3', 'email3@email.com'),
+
+  ]
 
   constructor() { }
 

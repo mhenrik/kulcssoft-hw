@@ -1,7 +1,10 @@
-<div class="row">
-  <div class="col-xs-12">
-    <app-user-item
-      *ngFor='let userElement of users'
-      [user]="userElement"></app-user-item>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <app-user-item
+        *ngFor='let userElement of users'
+        [user]="userElement"></app-user-item>
+    </div>
   </div>
 </div>
+
