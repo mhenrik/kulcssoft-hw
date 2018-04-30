@@ -2,11 +2,12 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {UserService} from './user.service';
 import {Injectable} from '@angular/core';
 import {User} from '../user/user.model';
+import {AuthService} from './auth.service';
 
 @Injectable()
 export class DataService {
 
-  constructor(private httpClient: HttpClient, private userService: UserService){}
+  constructor(private httpClient: HttpClient, private userService: UserService, private authService: AuthService){}
 
   getUsersFromServer() {
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
@@ -80,7 +81,7 @@ export class DataService {
     };
     this.httpClient.post('http://localhost:8080/login', null, options)
       .subscribe(response => {
-          console.log(response);
+          this.authService.login();
         },
         error1 => {
           console.log('error');

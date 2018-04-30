@@ -15,6 +15,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import {FormsModule} from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
+import {AuthService} from './shared/auth.service';
+import {AuthGuard} from './shared/auth-guard.service';
 
 
 @NgModule({
@@ -34,7 +36,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
     FormsModule,
     NgbModule.forRoot(),
   ],
-  providers: [UserService, DataService],
+  providers: [UserService, DataService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

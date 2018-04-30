@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.Collections;
 
 @RestController
@@ -26,7 +27,7 @@ public class LoginControllerREST {
             @RequestParam String password) {
         Admin admin = loginService.login(username, password);
         if (admin != null) {
-            return ResponseEntity.ok(admin.getId());
+            return ResponseEntity.status(HttpStatus.ACCEPTED).build();
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("error", "wrong username or password"));
     }

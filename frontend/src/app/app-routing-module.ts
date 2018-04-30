@@ -4,14 +4,15 @@ import {UserListComponent} from './user-list/user-list.component';
 import {NgModule} from '@angular/core';
 import {UserRegisterComponent} from './user-register/user-register.component';
 import {SignInComponent} from './sign-in/sign-in.component';
+import {AuthGuard} from './shared/auth-guard.service';
 
 
 
 const appRoutes: Routes = [
   { path: '', component: StartComponent },
-  { path: 'users', component: UserListComponent },
-  { path: 'new-user', component: UserRegisterComponent },
-  { path: 'sign-in', component: SignInComponent}
+  { path: 'users', canActivate: [AuthGuard], component: UserListComponent },
+  { path: 'new-user', canActivate: [AuthGuard], component: UserRegisterComponent },
+  { path: 'login', component: SignInComponent}
 ]
 
 
