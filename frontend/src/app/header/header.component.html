@@ -1,5 +1,5 @@
-<div class="container" style="padding-left: 0; padding-right: 0;">
-  <nav class="navbar navbar-dark bg-primary navbar-fixed-top navbar-expand-lg">
+<div class="container sticky-top" style="padding-left: 0; padding-right: 0;">
+  <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
     <a class="navbar-brand" routerLink="/" (click)="navbarCollapsed = true">Kulcssoft HW</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
             [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,13 +7,13 @@
     </button>
     <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item" routerLinkActive="active">
+        <li class="nav-item" routerLinkActive="active" *ngIf="loggedIn">
           <a class="nav-link" routerLink="/users" (click)="onFetchData()">List Users</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
+        <li class="nav-item" routerLinkActive="active" *ngIf="loggedIn">
           <a class="nav-link" routerLink="/new-user" (click)="navbarCollapsed=true">Register new user</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
+        <li class="nav-item" routerLinkActive="active" *ngIf="!loggedIn">
           <a class="nav-link" routerLink="/login" (click)="navbarCollapsed=true">Login</a>
         </li>
       </ul>

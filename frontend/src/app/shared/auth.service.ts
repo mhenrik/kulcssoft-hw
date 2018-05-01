@@ -1,22 +1,24 @@
+import {Subject} from 'rxjs/Subject';
 
 export class AuthService {
   token: string;
-  loggedIn = false;
+  loggedIn = new Subject<boolean>();
 
   isAuthenticated() {
     return this.token != null;
   }
 
-  login(response) {
+  loginserv(response) {
     this.token = response['token'];
-    this.loggedIn = true;
+    this.loggedIn.next(true);
   }
 
   getToken(): string {
     return this.token;
+    /*return this.token;*/
   }
 
   loginError(error1: string) {
-    this.loggedIn = false;
+    this.loggedIn.next(false);
   }
 }

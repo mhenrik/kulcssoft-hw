@@ -7,10 +7,9 @@ import {AuthService} from './auth.service';
 @Injectable()
 export class DataService {
 
-  constructor(private httpClient: HttpClient, private userService: UserService, private authService: AuthService){}
+  constructor(private httpClient: HttpClient, private userService: UserService, private authService: AuthService) {}
 
   getUsersFromServer() {
-    console.log(this.authService.getToken());
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
       .set('token', this.authService.getToken());

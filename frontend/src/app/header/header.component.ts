@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../shared/data.service';
+import {AuthService} from '../shared/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,16 @@ import {DataService} from '../shared/data.service';
 })
 export class HeaderComponent implements OnInit {
   navbarCollapsed = true;
+  loggedIn;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.authService.loggedIn.subscribe(
+      (data: boolean) => {
+        this.loggedIn = data;
+      }
+    );
   }
 
   onFetchData() {

@@ -1,6 +1,5 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    <div [ngStyle]="{
+<div class="col-md-12">
+  <div [ngStyle]="{
       'position':'fixed',
       'top': '0px',
       'left': '0px',
@@ -8,21 +7,20 @@
       'z-index':'9999',
       'border-radius':'0px',
       'text-align': 'center'}">
-      <ngb-alert *ngIf="success" type="{{ alertType }}" [dismissible]="false">{{ alertMessage }}</ngb-alert>
+    <ngb-alert *ngIf="success" type="{{ alertType }}" [dismissible]="false">{{ alertMessage }}</ngb-alert>
+  </div>
+</div>
+<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+  <form (ngSubmit)="onRegister(f)" #f="ngForm">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" ngModel class="form-control" #name>
     </div>
-  </div>
-  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    <form (ngSubmit)="onRegister(f)" #f="ngForm" (keydown.enter)="onRegister(f)">
-      <div class="form-group">
-        <label for="username">User Name</label>
-        <input type="text" name="username" id="username" ngModel class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="email">email</label>
-        <input type="email" name="email" id="email" ngModel class="form-control">
-      </div>
-      <button class="btn btn-primary" type="submit">Save user</button>
-    </form>
-  </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" ngModel class="form-control">
+    </div>
+    <button class="btn btn-primary" type="submit">Save user</button>
+  </form>
 </div>
 

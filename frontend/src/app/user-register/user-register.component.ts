@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../shared/user.service';
 import {DataService} from '../shared/data.service';
 import {NgForm} from '@angular/forms';
@@ -12,6 +12,7 @@ import 'rxjs/add/operator/delay';
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
+  @ViewChild('name') private elementRef: ElementRef;
   alertType;
   alertMessage;
   success = false;
@@ -22,7 +23,9 @@ export class UserRegisterComponent implements OnInit {
 
   constructor(private userService: UserService, private dataService: DataService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.elementRef.nativeElement.focus()
+  }
 
   onRegister(form: NgForm) {
     const username = form.value.username;

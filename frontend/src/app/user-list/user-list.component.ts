@@ -29,7 +29,6 @@ export class UserListComponent implements OnInit {
     this.users = this.userService.getUsers();
   }
   receiveDel(bool: boolean){
-    console.log(bool);
     this.success = bool;
     this.onDel.subscribe(
       (data: boolean) => {

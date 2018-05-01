@@ -27,6 +27,7 @@ public class LoginControllerREST {
         Admin admin = loginService.login(username, password);
         if (admin != null) {
             loginService.createToken();
+            System.out.println(loginService.getToken());
             return ResponseEntity.ok(Collections.singletonMap("token", loginService.getToken()));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("error", "wrong username or password"));
