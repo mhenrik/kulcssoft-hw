@@ -78,14 +78,7 @@ export class DataService {
       params,
       withCredentials: true
     };
-    this.httpClient.post('http://localhost:8080/login', null, options)
-      .subscribe(response => {
-          this.authService.login(response);
-        },
-        error1 => {
-          console.log('error');
-        }
-      );
+    return this.httpClient.post('http://localhost:8080/login', null, options);
   }
 
 }

@@ -1,9 +1,12 @@
-<div class="list-group">
-  <div class="list group-item list-group-item-action flex-column align-items-center">
-    <h5 class="mb1">{{ user.username }}</h5>
-    <p class="mb1">{{ user.email }}</p>
-    <p class="mb1">{{ user.id }}</p>
-    <button class="btn btn-danger" type="button" (click)="onDeleteUser(user)">Delete</button>
-  </div>
-</div>
-
+<table class="table table-striped">
+  <tbody>
+  <tr>
+    <th class="text-center" style="width: 10%" scope="row">{{user.id}}</th>
+    <td class="text-center" style="width: 40%">{{user.username}}</td>
+    <td class="text-center" style="width: 40%">{{user.email}}</td>
+    <td style="width: 10%">
+      <button class="btn btn-danger" type="button" (click)="onDeleteUser(user)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

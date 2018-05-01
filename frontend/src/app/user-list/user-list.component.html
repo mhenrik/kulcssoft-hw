@@ -1,10 +1,15 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-2">
-      <app-user-item
-        *ngFor='let userElement of users'
-        [user]="userElement"></app-user-item>
-    </div>
-  </div>
+<div class="col-md-12">
+  <ngb-alert *ngIf="success" type="success" [dismissible]="false">User deleted!</ngb-alert>
 </div>
-
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col" style="width: 10%" class="text-center">#</th>
+    <th scope="col" style="width: 40%" class="text-center">Username</th>
+    <th scope="col" style="width: 40%" class="text-center">Email</th>
+    <th scope="col" style="width: 10%" class="text-center">Option</th>
+  </tr>
+  </thead>
+</table>
+<app-user-item (successDel)="receiveDel($event)" *ngFor='let userElement of users'
+    [user]="userElement"></app-user-item>

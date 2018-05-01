@@ -4,14 +4,7 @@ export class AuthService {
   loggedIn = false;
 
   isAuthenticated() {
-    const promise = new Promise(
-      (resolve, reject) => {
-        setTimeout(() => {
-          resolve(this.loggedIn);
-        }, 800);
-      }
-    );
-    return promise;
+    return this.token != null;
   }
 
   login(response) {
@@ -19,11 +12,11 @@ export class AuthService {
     this.loggedIn = true;
   }
 
-  logout() {
-    this.loggedIn = false;
-  }
-
   getToken(): string {
     return this.token;
+  }
+
+  loginError(error1: string) {
+    this.loggedIn = false;
   }
 }

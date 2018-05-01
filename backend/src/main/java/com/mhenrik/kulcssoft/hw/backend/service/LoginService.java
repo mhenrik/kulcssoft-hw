@@ -40,7 +40,6 @@ public class LoginService {
 
     public void createToken(){
         this.token = this.encrypt(key.toString());
-        System.out.println(this.token);
     }
 
     public boolean checkToken(String token){

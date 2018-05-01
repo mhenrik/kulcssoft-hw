@@ -1,9 +1,9 @@
 <div class="row">
-  <div class="col-6" *ngIf="success">
-  <ngb-alert type="success" (close)=this.close()>Done</ngb-alert>
-</div>
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    <form (ngSubmit)="onRegister(f)" #f="ngForm">
+    <ngb-alert *ngIf="success" type="success" [dismissible]="false">User registered!</ngb-alert>
+  </div>
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <form (ngSubmit)="onRegister(f)" #f="ngForm" (keydown.enter)="onRegister(f)">
       <div class="form-group">
         <label for="username">User Name</label>
         <input type="text" name="username" id="username" ngModel class="form-control">
