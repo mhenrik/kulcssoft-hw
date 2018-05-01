@@ -36,14 +36,7 @@ export class DataService {
       params,
       withCredentials: true
     };
-    this.httpClient.post('http://localhost:8080/user', null, options)
-      .subscribe(response => {
-          console.log(response);
-        },
-        error1 => {
-          console.log('error');
-        }
-      );
+    return this.httpClient.post('http://localhost:8080/user', null, options);
   }
 
   public deleteUserFromServer(userId: number) {

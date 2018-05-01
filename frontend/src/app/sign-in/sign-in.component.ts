@@ -13,7 +13,6 @@ import {AuthService} from '../shared/auth.service';
 export class SignInComponent implements OnInit {
   alertType;
   alertMessage;
-  loggedIn = false;
   success = false;
   onSuccess = Observable.create(obs => {
     obs.next(false);

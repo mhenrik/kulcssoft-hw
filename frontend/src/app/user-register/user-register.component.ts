@@ -12,6 +12,8 @@ import 'rxjs/add/operator/delay';
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
+  alertType;
+  alertMessage;
   success = false;
   onClose = Observable.create(obs => {
     obs.next(false);
@@ -27,12 +29,27 @@ export class UserRegisterComponent implements OnInit {
     const email = form.value.email;
     const user = new User(username, email);
     this.userService.addUser(user);
-    this.dataService.addUserToServer(user);
-    form.reset();
-    this.success = true;
-    this.onClose.subscribe(
-      (data: boolean) => {
-        this.success = data;
+    this.dataService.addUserToServer(user).subscribe(response => {
+        form.reset();
+        this.alertType = 'success';
+        this.alertMessage = 'User Registered!';
+        this.success = true;
+        this.onClose.subscribe(
+          (data: boolean) => {
+            this.success = data;
+          }
+        );
+      },
+      error1 => {
+      form.reset();
+      this.alertType = 'danger';
+      this.alertMessage = 'Username or email already taken!';
+      this.success = true;
+      this.onClose.subscribe(
+        (data: boolean) => {
+          this.success = data;
+        }
+      );
       }
     );
   }

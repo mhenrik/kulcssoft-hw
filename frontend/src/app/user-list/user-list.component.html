@@ -1,4 +1,12 @@
-<div class="col-md-12">
+<div class="col-md-12"
+     [ngStyle]="{
+      'position':'fixed',
+      'top': '0px',
+      'left': '0px',
+      'width': '100%',
+      'z-index':'9999',
+      'border-radius':'0px',
+      'text-align': 'center'}">
   <ngb-alert *ngIf="success" type="success" [dismissible]="false">User deleted!</ngb-alert>
 </div>
 <table class="table table-striped">
