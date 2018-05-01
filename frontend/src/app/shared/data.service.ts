@@ -10,9 +10,12 @@ export class DataService {
   constructor(private httpClient: HttpClient, private userService: UserService, private authService: AuthService){}
 
   getUsersFromServer() {
-    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+    console.log(this.authService.getToken());
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set('token', this.authService.getToken());
     this.httpClient.get<User[]>('http://localhost:8080/users', {
-      headers: headers,
+      headers: headers
     })
       .subscribe(
         (users) => {
@@ -22,10 +25,9 @@ export class DataService {
   }
 
   addUserToServer(user: User) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json; charset=utf-8'
-      /*'Authorization': 'Basic YW5ndWxhcjphbmd1bGFy'*/
-    });
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set('token', this.authService.token);
     const params = new HttpParams()
       .set('username', user.username)
       .set('email', user.email);
@@ -45,10 +47,9 @@ export class DataService {
   }
 
   public deleteUserFromServer(userId: number) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json; charset=utf-8'
-      /*'Authorization': 'Basic YW5ndWxhcjphbmd1bGFy'*/
-    });
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set('token', this.authService.token);
     const params = new HttpParams()
       .set('userId', userId.toLocaleString());
     const options = {
@@ -67,10 +68,8 @@ export class DataService {
   }
 
   login(username: string, password: string) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json; charset=utf-8'
-      /*'Authorization': 'Basic YW5ndWxhcjphbmd1bGFy'*/
-    });
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
     const params = new HttpParams()
       .set('username', username)
       .set('password', password);
@@ -81,7 +80,7 @@ export class DataService {
     };
     this.httpClient.post('http://localhost:8080/login', null, options)
       .subscribe(response => {
-          this.authService.login();
+          this.authService.login(response);
         },
         error1 => {
           console.log('error');

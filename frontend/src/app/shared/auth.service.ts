@@ -1,5 +1,6 @@
 
 export class AuthService {
+  token: string;
   loggedIn = false;
 
   isAuthenticated() {
@@ -13,11 +14,16 @@ export class AuthService {
     return promise;
   }
 
-  login() {
+  login(response) {
+    this.token = response['token'];
     this.loggedIn = true;
   }
 
   logout() {
     this.loggedIn = false;
+  }
+
+  getToken(): string {
+    return this.token;
   }
 }
