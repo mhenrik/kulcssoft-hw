@@ -10,6 +10,7 @@ import {User} from '../user/user.model';
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
+  success = false;
 
   constructor(private userService: UserService, private dataService: DataService) { }
 
@@ -23,5 +24,6 @@ export class UserRegisterComponent implements OnInit {
     this.userService.addUser(user);
     this.dataService.addUserToServer(user);
     form.reset();
+    this.success = true;
   }
 }

@@ -5,8 +5,14 @@ import com.mhenrik.kulcssoft.hw.backend.repository.LoginRepository;
 import org.springframework.security.crypto.bcrypt.*;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class LoginService {
+
+    public static final UUID key = UUID.randomUUID();
+
+    private String token;
 
     private LoginRepository loginRepository;
 
@@ -30,5 +36,18 @@ public class LoginService {
         password = this.encrypt(password);
         admin.setPassword(password);
         loginRepository.save(admin);
+    }
+
+    public void createToken(){
+        this.token = this.encrypt(key.toString());
+        System.out.println(this.token);
+    }
+
+    public boolean checkToken(String token){
+       return token.equals(this.token);
+    }
+
+    public String getToken() {
+        return token;
     }
 }

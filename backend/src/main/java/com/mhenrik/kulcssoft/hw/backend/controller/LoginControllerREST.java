@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.annotation.SessionScope;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
@@ -27,7 +28,8 @@ public class LoginControllerREST {
             @RequestParam String password) {
         Admin admin = loginService.login(username, password);
         if (admin != null) {
-            return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+            loginService.createToken();
+            return ResponseEntity.ok(Collections.singletonMap("token", loginService.getToken()));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("error", "wrong username or password"));
     }
